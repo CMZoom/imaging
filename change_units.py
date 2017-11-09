@@ -39,5 +39,7 @@ for hdu in corrected_hdus:
     newdata[weight.astype('bool')] += reproj[weight.astype('bool')]
     newweight += weight
 
+outheader['BUNIT'] = 'Jy/sr'
+
 final_hdu = fits.PrimaryHDU(data=newdata/newweight, header=outheader)
 final_hdu.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/mosaic_JySr.fits'))
