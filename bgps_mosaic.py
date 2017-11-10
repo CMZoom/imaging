@@ -41,3 +41,6 @@ sma_mosaic = fits.open(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/Novem
 #sma_mosaic[0].header['BUNIT'] = 'Jy/sr'
 
 comb = uvcombine.feather_simple(sma_mosaic[0], rslt)
+
+comb_hdu = fits.PrimaryHDU(data=comb.real, header=sma_mosaic[0].header)
+comb_hdu.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/sma_bgps_feather.fits'))
