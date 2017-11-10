@@ -26,19 +26,18 @@ for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/SMA_CMZ/CMZo
 
     corrected_hdus.append(hdu)
 
-outheader = fits.getheader(os.path.expanduser('~/Dropbox/SMA_CMZ_FITS_files/BGPS_Mosaic.fits'))
+outheader = fits.Header()
 outheader['NAXIS1'] = 20000
 outheader['NAXIS2'] = 4000
+outheader['CTYPE1'] = 'GLON-CAR'
+outheader['CTYPE2'] = 'GLAT-CAR'
 outheader['CRVAL1'] = 0.435
 outheader['CRVAL2'] = -0.167
 outheader['CRPIX1'] = 10000
 outheader['CRPIX2'] = 2000
 outheader['CDELT1'] = -0.00013888888888
 outheader['CDELT2'] = 0.00013888888888
-del outheader['CD1_1']
-del outheader['CD1_2']
-del outheader['CD2_1']
-del outheader['CD2_2']
+outheader['BUNIT'] = 'Jy/sr'
 
 newdata = np.zeros([outheader['NAXIS2'], outheader['NAXIS1']])
 newweight = np.zeros([outheader['NAXIS2'], outheader['NAXIS1']])
@@ -49,8 +48,6 @@ for hdu in ProgressBar(corrected_hdus):
 
     newdata[weight.astype('bool')] += reproj[weight.astype('bool')]
     newweight += weight
-
-outheader['BUNIT'] = 'Jy/sr'
 
 final_hdu = fits.PrimaryHDU(data=newdata/newweight, header=outheader)
 final_hdu.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/residual_mosaic_JySr.fits'))
