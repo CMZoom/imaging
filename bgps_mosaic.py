@@ -32,6 +32,7 @@ for fn in urls:
     totalimg[weight.astype('bool')] += reproj[weight.astype('bool')]
     weightimg += weight
 
+header['BUNIT'] = 'Jy/beam'
 rslt = fits.PrimaryHDU(data=totalimg/weightimg, header=header)
 rslt.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ_FITS_files/BGPS_Mosaic.fits'), overwrite=True)
 
