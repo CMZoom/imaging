@@ -28,12 +28,12 @@ for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/CMZoom_Data/
 
 outheader = fits.Header()
 outheader['NAXIS'] = 2
-outheader['NAXIS1'] = 20000
-outheader['NAXIS2'] = 4000
+outheader['NAXIS1'] = 19000
+outheader['NAXIS2'] = 2800
 outheader['CTYPE1'] = 'GLON-CAR'
 outheader['CTYPE2'] = 'GLAT-CAR'
-outheader['CRVAL1'] = 0.435
-outheader['CRVAL2'] = -0.167
+outheader['CRVAL1'] = 0.418 # 0.435
+outheader['CRVAL2'] = -0.081 # -0.167
 outheader['CRPIX1'] = 10000
 outheader['CRPIX2'] = 2000
 outheader['CDELT1'] = -0.00013888888888
