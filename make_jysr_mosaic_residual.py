@@ -51,4 +51,4 @@ for hdu in ProgressBar(corrected_hdus):
     newweight += weight
 
 final_hdu = fits.PrimaryHDU(data=newdata/newweight, header=outheader)
-final_hdu.writeto(os.path.expanduser('~/Dropbox/CMZoom_Data/continuum_images/residual_mosaic_JySr.fits'))
+final_hdu.writeto(os.path.expanduser('~/Dropbox/CMZoom_Data/continuum_images/residual_mosaic_JySr_Nov16.fits'))
