@@ -10,7 +10,7 @@ import glob
 
 corrected_hdus = []
 
-for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/Residuals/G*fits"))):
+for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/CMZoom_Data/continuum_images/Residuals/G*fits"))):
     originalfits = fits.open(filename)
     originaldata = originalfits[0].data.squeeze()
     originalheader = originalfits[0].header
@@ -50,4 +50,4 @@ for hdu in ProgressBar(corrected_hdus):
     newweight += weight
 
 final_hdu = fits.PrimaryHDU(data=newdata/newweight, header=outheader)
-final_hdu.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/residual_mosaic_JySr.fits'))
+final_hdu.writeto(os.path.expanduser('~/Dropbox/CMZoom_Data/continuum_images/residual_mosaic_JySr.fits'))
