@@ -37,10 +37,10 @@ rslt = fits.PrimaryHDU(data=totalimg/weightimg, header=header)
 rslt.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ_FITS_files/BGPS_Mosaic.fits'), overwrite=True)
 
 
-sma_mosaic = fits.open(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/mosaic_JySr.fits'))
+sma_mosaic = fits.open(os.path.expanduser('~/Dropbox/CMZoom_Data/continuum_images/mosaic_JySr.fits'))
 #sma_mosaic[0].header['BUNIT'] = 'Jy/sr'
 
 comb = uvcombine.feather_simple(sma_mosaic[0], rslt)
 
 comb_hdu = fits.PrimaryHDU(data=comb.real, header=sma_mosaic[0].header)
-comb_hdu.writeto(os.path.expanduser('~/Dropbox/SMA_CMZ/CMZoom_Images/November17_continuum_fits/sma_bgps_feather.fits'))
+comb_hdu.writeto(os.path.expanduser('~/Dropbox/CMZoom_Data/continuum_images/sma_bgps_feather.fits'))
