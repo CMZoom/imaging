@@ -27,6 +27,7 @@ for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/CMZoom_Data/
     corrected_hdus.append(hdu)
 
 outheader = fits.Header()
+outheader['NAXIS'] = 2
 outheader['NAXIS1'] = 20000
 outheader['NAXIS2'] = 4000
 outheader['CTYPE1'] = 'GLON-CAR'
