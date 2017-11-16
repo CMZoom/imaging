@@ -10,7 +10,7 @@ import glob
 
 corrected_hdus = []
 
-for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/CMZoom_Data/continuum_images/G*fits"))):
+for filename in ProgressBar(glob.glob(os.path.expanduser("~/Dropbox/CMZoom_Data/continuum_images/[GS]*fits"))):
     originalfits = fits.open(filename)
     originaldata = originalfits[0].data.squeeze()
     originalheader = originalfits[0].header
